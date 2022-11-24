@@ -1,0 +1,167 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+use yii\helpers\ArrayHelper;
+
+/**
+ * This is the model class for table "auth_item".
+ *
+ * @property string $name
+ * @property int $type
+ * @property string|null $description
+ * @property string|null $rule_name
+ * @property resource|null $data
+ * @property int|null $created_at
+ * @property int|null $updated_at
+ * @property string|null $name_for_user
+ * @property string|null $category
+ * @property int|null $role_type
+ *
+ * @property AuthAssignment[] $authAssignments
+ * @property AuthItemChild[] $authItemChildren
+ * @property AuthItemChild[] $authItemChildren0
+ * @property AuthItem[] $children
+ * @property AuthItem[] $parents
+ * @property AuthRule $ruleName
+ */
+class AuthItem extends BaseModel
+{
+
+    const AUTH_ITEM_RULE = 1;
+    const AUTH_ITEM_PERMISSION = 2;
+    public $controller;
+    public $new_permissions;
+    public $category;
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return 'auth_item';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['name', 'type'], 'required'],
+            [['type', 'created_at', 'updated_at'], 'integer'],
+            [['description', 'data'], 'string'],
+            [['name', 'rule_name'], 'string', 'max' => 64],
+            [['name'], 'unique'],
+            [['rule_name', 'controller', 'category', 'new_permissions'], 'safe'],
+//            [['rule_name'], 'exist', 'skipOnError' => true, 'targetClass' => AuthRule::className(), 'targetAttribute' => ['rule_name' => 'name']],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'name' => 'Name',
+            'type' => 'Type',
+            'description' => 'Description',
+            'rule_name' => 'Rule Name',
+            'data' => 'Data',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+        ];
+    }
+
+    public static function getList($type){
+//        const AUTH_ITEM_RULE = 1;
+//        const AUTH_ITEM_PERMISSION = 2;
+        if ($type == self::AUTH_ITEM_RULE){
+            return 'Rule';
+        }
+        if ($type == self::AUTH_ITEM_PERMISSION){
+            return 'Permission';
+        }
+    }
+    /**
+     * Gets query for [[AuthAssignments]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAuthAssignments()
+    {
+        return $this->hasMany(AuthAssignment::className(), ['item_name' => 'name']);
+    }
+
+    /**
+     * Gets query for [[AuthItemChildren]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAuthItemChildren()
+    {
+        return $this->hasMany(AuthItemChild::className(), ['parent' => 'name']);
+    }
+
+    /**
+     * Gets query for [[AuthItemChildren0]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAuthItemChildren0()
+    {
+        return $this->hasMany(AuthItemChild::className(), ['child' => 'name']);
+    }
+
+    /**
+     * Gets query for [[Children]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getChildren()
+    {
+        return $this->hasMany(AuthItem::className(), ['name' => 'child'])->viaTable('auth_item_child', ['parent' => 'name']);
+    }
+
+    /**
+     * Gets query for [[Parents]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getParents()
+    {
+        return $this->hasMany(AuthItem::className(), ['name' => 'parent'])->viaTable('auth_item_child', ['child' => 'name']);
+    }
+
+    /**
+     * Gets query for [[RuleName]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRuleName()
+    {
+        return $this->hasOne(AuthRule::className(), ['name' => 'rule_name']);
+    }
+
+    public static function getListRule(){
+        return ArrayHelper::map(self::findAll(['type' => self::AUTH_ITEM_RULE]), 'name', 'name');
+    }
+
+    public function getDelete($id){
+        $auth = Yii::$app->authManager;
+        $item = $auth->getRole($id);
+        if ($item){
+            $auth->remove($item);
+            return true;
+        }
+        return false;
+    }
+
+    public static function ruleName($name){
+        $rule_name = AuthItemChild::find()->where(['child' => $name])->all();
+        return $rule_name;
+//        return ArrayHelper::map($rule_name, 'name', 'name');
+    }
+}

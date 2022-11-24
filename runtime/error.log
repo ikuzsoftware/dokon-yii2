@@ -1,0 +1,62 @@
+2022/06/20 16:21:00 [error] 10617#10617: *137 FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream, client: 127.0.0.1, server: dokon-yii2, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "dokon-yii2"
+2022/06/20 16:21:02 [error] 10617#10617: *137 FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream, client: 127.0.0.1, server: dokon-yii2, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "dokon-yii2"
+2022/06/20 16:21:20 [error] 10617#10617: *137 FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream, client: 127.0.0.1, server: dokon-yii2, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "dokon-yii2"
+2022/06/20 16:21:21 [error] 10617#10617: *137 FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream, client: 127.0.0.1, server: dokon-yii2, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "dokon-yii2"
+2022/06/20 17:13:47 [error] 10617#10617: *266 FastCGI sent in stderr: "PHP message: An Error occurred while handling another error:
+yii\base\InvalidRouteException: Unable to resolve the request: site/error in /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Controller.php:149
+Stack trace:
+#0 /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction()
+#1 /var/www/dokon-yii2/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction()
+#2 /var/www/dokon-yii2/vendor/yiisoft/yii2/base/ErrorHandler.php(135): yii\web\ErrorHandler->renderException()
+#3 [internal function]: yii\base\ErrorHandler->handleException()
+#4 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request: site/index in /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Controller.php:149
+Stack trace:
+#0 /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction()
+#1 /var/www/dokon-yii2/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction()
+#2 /var/www/dokon-yii2/vendor/yiisoft/yii2/b" while reading upstream, client: 127.0.0.1, server: dokon-yii2, request: "GET /site/index HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "dokon-yii2", referrer: "http://dokon-yii2/api/admin"
+2022/06/20 17:14:06 [error] 10617#10617: *266 FastCGI sent in stderr: "PHP message: An Error occurred while handling another error:
+yii\base\InvalidRouteException: Unable to resolve the request: site/error in /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Controller.php:149
+Stack trace:
+#0 /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction()
+#1 /var/www/dokon-yii2/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction()
+#2 /var/www/dokon-yii2/vendor/yiisoft/yii2/base/ErrorHandler.php(135): yii\web\ErrorHandler->renderException()
+#3 [internal function]: yii\base\ErrorHandler->handleException()
+#4 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request: site/index in /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Controller.php:149
+Stack trace:
+#0 /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction()
+#1 /var/www/dokon-yii2/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction()
+#2 /var/www/dokon-yii2/vendor/yiisoft/yii2/b" while reading upstream, client: 127.0.0.1, server: dokon-yii2, request: "GET /site/index HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "dokon-yii2", referrer: "http://dokon-yii2/api/admin"
+2022/06/20 17:16:19 [error] 10617#10617: *274 FastCGI sent in stderr: "PHP message: An Error occurred while handling another error:
+yii\base\InvalidRouteException: Unable to resolve the request: site/error in /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Controller.php:149
+Stack trace:
+#0 /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction()
+#1 /var/www/dokon-yii2/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction()
+#2 /var/www/dokon-yii2/vendor/yiisoft/yii2/base/ErrorHandler.php(135): yii\web\ErrorHandler->renderException()
+#3 [internal function]: yii\base\ErrorHandler->handleException()
+#4 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request: site/about in /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Controller.php:149
+Stack trace:
+#0 /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction()
+#1 /var/www/dokon-yii2/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction()
+#2 /var/www/dokon-yii2/vendor/yiisoft/yii2/b" while reading upstream, client: 127.0.0.1, server: dokon-yii2, request: "GET /site/about HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "dokon-yii2", referrer: "http://dokon-yii2/api/admin"
+2022/06/20 17:16:21 [error] 10617#10617: *274 FastCGI sent in stderr: "PHP message: An Error occurred while handling another error:
+yii\base\InvalidRouteException: Unable to resolve the request: site/error in /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Controller.php:149
+Stack trace:
+#0 /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction()
+#1 /var/www/dokon-yii2/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction()
+#2 /var/www/dokon-yii2/vendor/yiisoft/yii2/base/ErrorHandler.php(135): yii\web\ErrorHandler->renderException()
+#3 [internal function]: yii\base\ErrorHandler->handleException()
+#4 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request: site/contact in /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Controller.php:149
+Stack trace:
+#0 /var/www/dokon-yii2/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction()
+#1 /var/www/dokon-yii2/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction()
+#2 /var/www/dokon-yii2/vendor/yiisoft/yii2" while reading upstream, client: 127.0.0.1, server: dokon-yii2, request: "GET /site/contact HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "dokon-yii2", referrer: "http://dokon-yii2/api/admin"
+2022/06/20 20:23:34 [error] 10616#10616: *393 FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream, client: 127.0.0.1, server: dokon-yii2, request: "GET /api/product HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "dokon-yii2"
+2022/06/20 20:23:40 [error] 10616#10616: *393 FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream, client: 127.0.0.1, server: dokon-yii2, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "dokon-yii2"
